@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" id="device-viewport">
     <title>laef</title>
   </head>
   <body>
@@ -13,5 +14,15 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+        const devViewport = function(){
+            const vw = document.body.clientWidth
+            if(vw < 720){
+                var r = (vw / 720).toFixed(5);
+                document.querySelector('#device-viewport').setAttribute('content', 'width=device-width, initial-scale='+ r +', minimum-scale='+ r +', maximum-scale='+ r)   
+            } 
+        }
+        devViewport()
+    </script>
   </body>
 </html>
