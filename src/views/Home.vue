@@ -19,14 +19,7 @@
                 <div class="menu" >
                     <img src="../../public/img/Adidas.png" @click="showToggel">
                 </div>
-                <div class="guidance" v-show="isShow">
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                    </ul>
-                </div>
+               
                 <div class="headline">
                     <img src="../../public/img/logo1.png">
                 </div>
@@ -247,14 +240,16 @@
             </div>
             <my-footer></my-footer>
         </div>
+        <my-serve v-show="isShow" style="top: 80px;"></my-serve>
     </div>
 </template>
 
 <script>
     import MyFooter from '@/components/footer'
+    import MyServe from '@/components/serve'
 export default {
     name: 'Chen',
-    components: { MyFooter },
+    components: { MyFooter, MyServe },
     data () {
         return {
             img:[{
@@ -297,6 +292,17 @@ export default {
             },
             showToggel:function (){
                 this.isShow = !this.isShow
+            },
+            showToggel:function (){
+                this.isShow = !this.isShow
+                if(this.isShow === true){
+                    document.querySelector('html').style.overflow = 'hidden'
+                    document.querySelector('body').style.overflow = 'hidden'
+                
+                }else{
+                    document.querySelector('html').style.overflow = 'auto'
+                    document.querySelector('body').style.overflow = 'auto'
+                }
             }
         }
 }
@@ -322,7 +328,7 @@ export default {
     .headline { margin: 22px 0 0 280px; position: absolute; }
     .search { margin: 0; padding: 30px 30px; position: absolute; right: 0; top: 0; }
     
-    .guidance { position: absolute; left: 0; top: 0; background-color: #ffffff; margin: 60px 70px; }
+   
     
     .navigation { margin: 0; padding: 10px 10px 0; width: 100%; float: left; }
     .neck { padding-right: 3px; border-right: 3px #eeeeee solid; padding: 0; width: 25%; height: 164px; float: left; background-color: #ffffff; }
